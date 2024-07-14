@@ -1,6 +1,5 @@
 # Landing Page
 
-Landing Page Project
 This is the Landing Page Project
 
 Languages used:

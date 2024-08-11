@@ -4,7 +4,7 @@
 */
 
 // Navbar list global variable
-const navbarList = document.getElementById("#navbar__list");
+const navbarList = document.getElementById("navbar__list");
 // Sections global variable
 const sections = document.querySelectorAll("section");
 
@@ -45,15 +45,14 @@ const navItems = ["Section 1", "Section 2", "Section 3", "Section 4"];
         // Adds the anchor tag to the list item
        listItem.appendChild(anchor);
 
-    });
-}
 
     // Append all elements to the navBarItems
-    navBarList.appendChild(listItem); 
+    navbarList.appendChild(listItem); 
 
     // Attach click event listener to each anchor
     anchor.addEventListener("click", function(event) {
         event.preventDefault();
+    
 
     // Generate section ID based on index
     const sectionId = `section${index + 1}`;
@@ -63,86 +62,48 @@ const navItems = ["Section 1", "Section 2", "Section 3", "Section 4"];
 
     if(section) {
 
-    section.scrollIntoView({behavior: "smooth"});
-    
-    };
+    section.scrollIntoView({behavior: "smooth", block: "center"});
+    }
   });
- 
-
-buildNavigationMenu();
-
+ });
+}
 
 // Add class 'active' to section when near top of viewport
 
 function setActiveSection() {
 
     sections.forEach((section, index) => {
-        // Get position information of the element section
-        const bounding = section.getBoundingClientRect();
-        // Get a specific navItem based of its index
-        const navItem = document.querySelectorAll("#navbar__list li")[index];
+    // Get position information of the element section
+    const bounding = section.getBoundingClientRect();
+    
+    // Get a specific navItem based of its index
+    const navItem = document.querySelectorAll("#navbar__list li")[index];   
+    
+    if(bounding.top >= 0 && bounding.bottom <= window.innerHeight) {
             
-            if(bounding.top >= 0 && bounding.bottom <= window.innerHeight) {
-                section.classList.add("your-active-class");
-                navItem.classList.add("active-nav-item");
+            section.classList.add("active");
+            navItem.classList.add("active");
 
-                for(let i=0; i<sections.length; i++) {
-                    if(i !== index) {
-                        sections[i].classList.remove("your-active-class");
+    // For mobile screens
+    } else if(bounding.top < 0 && bounding.bottom > window.innerHeight) {
 
-        const otherNavItem = document.querySelectorAll("#navbar__list li")[i];
+            section.classList.add("active");
+            navItem.classList.add("active");
 
-        // Remove the class from the navItems so they are no longer highlighted
-        otherNavItem.classList.remove("active-nav-item");
-        }
-     }
-   } else {
+    } else {
 
-        section.classList.remove("your-active-class");
-        navItem.classList.remove("active-nav-item");
-   }
-
-// For small screens
-if(bounding.top < 0) {
-    section.classList.add("your-active-class");
-    navItem.classList.add("active-nav-item");
-
-    for(let i=0; i<sections.length; i++) {
-        if(i !== index) {
-            sections[i].classList.remove("your-active-class");
-
-const otherNavItem = document.querySelectorAll("#navbar__list li")[i];
-// Remove the class from the navItems so they are no longer highlighted
-otherNavItem.classList.remove("active-nav-item");
-        }
-    }
-} else {
-    section.classList.remove("your-active-class");
-    navItem.classList.remove("active-nav-item");
-  };
+            section.classList.remove("active");
+            navItem.classList.remove("active");
+    
+  } 
  });
-};
+}
 
-setActiveSection();
+buildNavigationMenu();
 
 
 
 // Scroll to anchor ID using scrollTO event
-
-const scroll = () => {
-
-    const links = document.querySelectorAll("#menu__link");
-    
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            for(i=0; i<section; i++) {
-                section[i].addEventListener("click", sectionScroll(link));
-            };
-        });
-    });
-};
-
-scroll();
 
 
 /**
@@ -151,13 +112,28 @@ scroll();
  * 
 */
 
-// Build menu 
+// Listen for scroll event and update active section based on scroll
+    window.addEventListener("scroll", setActiveSection);
+
+//* End Events
 
 
 
-// Scroll to section on link click
 
 
 
-// Set sections as active
+
+   
+
+   
+
+
+                
+
+ 
+    
+
+
+
+
 

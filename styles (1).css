@@ -1,3 +1,34 @@
+/* ---- NavBar Menu Items Styling ---- */
+#navbar__list {
+    display: flex;
+    height: 40px;
+    background-color: lightblue;
+    justify-content: center;
+}
+
+
+ul {
+    list-style: none;
+ }
+  
+li {
+    margin-right: 20px; 
+}
+
+li:hover {
+    background-color: rgb(255, 136, 0); /* Change the color to your desired color */
+    /* background-color: gold; */
+    /* Additional styles */
+}
+
+/* Styles for the active navigation item */
+li.active {
+    /* Define your styles for the active state */
+    background-color: gray;
+     /* Change the color to your desired active color */
+    font-weight: bold; /* Or any other style to indicate it's active */
+ }
+
 /* ---- Base Rules ---- */
 body {
     background: rgb(136,203,171);
@@ -7,7 +38,6 @@ body {
     color: #fff;
 }
 
-
 /* Typeography General*/
 h1 {
     font-family: 'Fira Sans', sans-serif;
@@ -15,7 +45,7 @@ h1 {
     margin: 2em 1rem;
 }
 
-@media only screen and (min-width: 35em){
+@media only screen and (min-width: 35em) {
     h1 {
         font-size: 7em;
         margin: 2em 4rem 1em;
@@ -60,29 +90,9 @@ section {
 }
 
 .navbar__menu li {
-    display: inline-block;
-    color:#000;
+    display: inline-flex;
+    align-items: center;
 }
-
-.navbar__menu .menu__link {
-    display: inline-block;
-    padding: 1em;
-    font-weight: bold;
-    text-decoration: none;
-    color: #000;
-}
-
-/* Styles for the active navigation item */
-.active li {
-    background-color: white;
-    font-weight: bold;
-}
-
-.active li.active {
-    background-color: rgb(46, 171, 44);
-    font-weight: bold;
-}
-
 
 /* Header Styles */
 .page__header {
@@ -100,10 +110,9 @@ section {
     color: #fff;
 }
 
-.page__footer p{
+.page__footer p {
     color: #fff;
 }
-
 
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
@@ -112,11 +121,11 @@ section {
     text-align: left;
 }
 
-@media only screen and (min-width: 35em){
-    .landing__container {
-        max-width: 50em;
-        padding: 4em;
-    }
+@media only screen and (min-width: 35em) {
+.landing__container {
+    max-width: 50em;
+    padding: 4em;
+}
 }
 
 section:nth-of-type(even) .landing__container {
@@ -125,34 +134,6 @@ section:nth-of-type(even) .landing__container {
     text-align: right; 
 }
 
-
-@media(min-width:600px)and(max-width:1100px){
-
-    .landing_container {
-        display:grid;
-        grid-template-columns: 1fr 1fr;
-        grid-auto-rows: auto;
-        grid-template-areas: 
-        "hd hd hd hd hd hd hd hd"
-        "ar ar ar ar ar ar ar ar"
-        "main main main main main main main main"
-        "ft ft ft ft ft ft ft ft";
-    }
-}
-
-
-@media(min-width:1101px){
-    .landing_container {
-         grid-template-columns: 1fr 1fr;
-         grid-template-rows:auto minmax(5rem,
-          auto) 1fr minmax(5rem, auto) auto;
-          grid-template-areas: 
-          "hd hd hd hd hd hd hd hd"
-          "ar ar ar ar ar ar ar ar"
-          "main main main main main main main main"
-          "ft ft ft ft ft ft ft ft";
-        }
-    }
 
 /* Background Circles */
 /* Note that background circles are created with psuedo elements before and after */
@@ -217,18 +198,17 @@ section:nth-of-type(3n + 1) .landing__container::after {
 
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
-/* Note: active class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
+/* Note: your active class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
 section.active {
-    background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-section.active.landing__container::before {
+section.active .landing__container::before {
     opacity: 1;
     animation: rotate 4s linear 0s infinite forwards;
 }
 
-section.active.landing__container::after {
+section.active .landing__container::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
 }
@@ -246,3 +226,16 @@ section.active.landing__container::after {
 		           rotate(-360deg);
 	}
 }
+
+  
+  
+
+
+
+
+
+   
+   
+   
+   
+	
